@@ -1,4 +1,4 @@
-export class Todo {
+export class todo {
     id: number;
     title = '';
     complete = false;
