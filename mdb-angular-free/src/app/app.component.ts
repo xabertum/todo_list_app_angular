@@ -1,6 +1,6 @@
 import { CategoryDataService } from './categories/category-data.service';
 import { Component, OnInit } from '@angular/core';
-import {todo} from './todos/todo';
+import {Todo} from './todos/todo';
 import {todoDataService} from './todos/todo-data.service';
 import {Category} from './categories/category';
 
@@ -14,7 +14,7 @@ import {Category} from './categories/category';
 
 export class AppComponent implements OnInit {
 
-  newtodo: todo = new todo();
+  newtodo: Todo = new Todo();
   newCategory: Category = new Category();
   selectedCategory: Category;
 
@@ -25,16 +25,16 @@ export class AppComponent implements OnInit {
   addtodo() {
     this.newtodo.category = this.selectedCategory.id;
     this.todoDataService.addTodo(this.newtodo);
-    this.newtodo = new todo();
+    this.newtodo = new Todo();
     console.log(this.todos);
   }
 
-  toggletodoComplete(todo) {
-    this.todoDataService.toggleTodoComplete(todo);
+  toggletodoComplete(Todo) {
+    this.todoDataService.toggleTodoComplete(Todo);
   }
 
-  removetodo(todo) {
-    this.todoDataService.deleteTodoById(todo.id);
+  removetodo(Todo) {
+    this.todoDataService.deleteTodoById(Todo.id);
   }
 
   get todos() {
@@ -70,8 +70,8 @@ export class AppComponent implements OnInit {
     this.categoryDataService.addCategory(category);
   }
 
-  addInitialtodo(todo) {
-    this.todoDataService.addTodo(todo);
+  addInitialtodo(Todo) {
+    this.todoDataService.addTodo(Todo);
   }
 
 
@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
     initCat = {'name' : 'Shopping list', 'id' : null , };
     this.addInitialCategory(initCat);
 
-    let inittodo = new todo();
+    let inittodo = new Todo();
     inittodo = {'title' : 'task1', 'complete': false, 'id' : null , category: 1 };
     this.addInitialtodo(inittodo);
     inittodo = {'title' : 'task2', 'complete': true, 'id' : null , category: 2 };
